@@ -9,7 +9,7 @@ router.post("/signup",[
     check("password","password should be atleast 6 char").isLength({min : 6}),
 ], signup)
 
-router.get("/signin",[
+router.post("/signin",[
     check("email","email is required").isEmail(),
     check("password","password should be atleast 6 char").isLength({min : 6}),
 ], signin)
