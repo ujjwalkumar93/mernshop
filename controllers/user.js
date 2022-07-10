@@ -56,3 +56,18 @@ exports.userPurchaseOrder = (req, res) => {
         return res.json(order)
     })
 }
+
+exports.pushOrderinInPurchaseList = (req, res, next) => {
+    let purchase = []
+    req.body.order.products.forEach(product => {
+        purchase.push({
+            _id: product._id,
+            name: product.name,
+            description: product.description,
+            category: product.category,
+            quantity : product.quantity,
+            amount: req.body.order.amount,
+            transaction_id: req.body.order.transaction_id
+        });
+    });
+}
